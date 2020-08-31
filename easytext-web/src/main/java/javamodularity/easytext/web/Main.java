@@ -7,6 +7,7 @@ import io.vertx.reactivex.core.Vertx;
 import javamodularity.easytext.algorithm.api.Analyzer;
 import javamodularity.easytext.algorithm.api.Preprocessing;
 import javamodularity.easytext.pagefetch.WikipediaFetcher;
+import javamodularity.easytext.vertx.VertxProvider;
 
 import java.util.ServiceLoader;
 
@@ -17,7 +18,7 @@ public class Main {
 
         var analyzers = ServiceLoader.load(Analyzer.class);
 
-        var vertx = ServiceLoader.load(Vertx.class).findFirst().get();
+        var vertx = VertxProvider.provider();
         var server = vertx.createHttpServer();
 
         server.requestHandler(request -> {

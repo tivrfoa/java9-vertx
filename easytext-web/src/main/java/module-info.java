@@ -2,6 +2,7 @@ module easytext.web {
     requires vertx.rx.java2;
     requires easytext.pagefetch;
     requires easytext.algorithm.api;
+    requires easytext.vertx;
     requires io.reactivex.rxjava2;
     requires vertx.core;
 

@@ -5,6 +5,7 @@ import io.vertx.reactivex.core.Vertx;
 import io.vertx.reactivex.ext.web.client.HttpResponse;
 import io.vertx.reactivex.ext.web.client.WebClient;
 import javamodularity.easytext.pagefetch.WikipediaFetcher;
+import javamodularity.easytext.vertx.VertxProvider;
 
 import java.util.ServiceLoader;
 
@@ -13,7 +14,8 @@ public class WikipediaFetchImpl implements WikipediaFetcher {
     private final WebClient client;
 
     public WikipediaFetchImpl() {
-        var vertx = ServiceLoader.load(Vertx.class).findFirst().get();
+        // var vertx = ServiceLoader.load(Vertx.class).findFirst().get();
+        var vertx = VertxProvider.provider();
         client = WebClient.create(vertx);
     }
 
